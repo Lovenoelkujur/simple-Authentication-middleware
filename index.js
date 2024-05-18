@@ -12,7 +12,6 @@ function authenticationMiddleware(req, res, next) {
     const userExist = userData.find(elem => req.body.email === elem.email && req.body.password === elem.password);
     if(userExist){
         fs.appendFileSync("login.log", `Request-URL : ${req.url}. User-Name : ${req.body.name}. Date and Time : ${new Date()} \n`)
-        // fs.appendFileSync("access.log", `Request recived at URL:- " ${req.url}  at  ${new Date()} \n`);
         next();
     } 
     else{
